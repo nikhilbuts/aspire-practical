@@ -1,11 +1,11 @@
 const express = require("express");
 const router = express.Router();
-
 const Employee = require("../models/employee");
 const validator = require("validator");
+const authenticateMiddleware = require("../middleware/auth");
 
 // GET
-router.get("/", async (req, res) => {
+router.get("/", authenticateMiddleware, async (req, res) => {
   try {
     const getEmployeeDetails = await Employee.find().sort({ salary: -1 });
     console.log("get Employee Details", getEmployeeDetails);
@@ -18,7 +18,7 @@ router.get("/", async (req, res) => {
 });
 
 // Employee POST API
-router.post("/", async (req, res) => {
+router.post("/", authenticateMiddleware, async (req, res) => {
   // validator
   if (!validator.isEmail(req.body.email)) {
     return res.status(400).json({
