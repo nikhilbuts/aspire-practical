@@ -61,13 +61,15 @@ Authorization: Bearer YourAccessToken
 
 Response:
 
-````{
+```
+{
   "success": true,
   "message": "Employee created successfully",
   "employee": {
     // Employee details
   }
-}```
+}
+```
 
 *Get Employees*
 
@@ -77,7 +79,7 @@ Authorization: Bearer YourAccessToken
 `
 
 Response
-````
+```
      {
      "success": true,
      "employees": [
